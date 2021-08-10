@@ -1,0 +1,349 @@
+*,
+*::before,
+*::after
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,body
+{
+    font-size: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    min-height: 100%;
+    height: 100%;
+}
+
+a
+{
+    display: block;
+    text-decoration: none;
+}
+
+.container
+{
+    max-width: 98rem;
+    margin: 0 auto;
+    padding 0 2.2rem;
+}
+
+#wrapper /*this fixes resizing of browser*/
+{
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+/*nav bar for non-mobile application*/
+
+header
+{
+    position: fixed;
+    top: 0;
+    z-index: 1400;
+    height: 4.8rem;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2rem);
+}
+
+.nav-list
+{
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-list-larger
+{
+    justify-content: space-around;
+}
+
+.nav-list-mobile
+{
+    margin: 3%;
+    display: none;
+    justify-content: space-between;
+}
+
+.nav-link
+{
+    font-size: 1.4rem;
+    color:#fff;
+    opacity: .8;
+    padding: 0 1rem;
+    transition: opacity .5s;
+}
+
+.nav-link:hover
+{
+    opacity: 1.3;
+}
+
+.nav-link-logo
+{
+    width: 1.6rem;
+    height: 4.4rem;
+    background: url("mylogo.png") center no-repeat; /*changed this*/
+}
+
+/*index - banner home-title footer*/
+
+.home-title
+{
+    top: 4.8rem;
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-size: 5rem;
+    display: table-row;
+    height: 100%;
+}
+
+.title
+{
+    left: 0;
+    line-height: 200px;
+    margin-top: -150px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+}
+
+footer
+{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
+
+.footer-bottom
+{
+    padding-bottom: 2rem;
+    position: relative;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+
+
+
+/*mobile, technically tablet and downwards*/
+
+@media screen and (max-width: 768px)
+{
+    header
+    {
+        height: 4.8rem;
+        transition: background .36s cubic-bezier(0.32, 0.08, 0.24, 1), height .56s cubic-bezier(0.32, 0.08, 0.24, 1);
+    }
+
+    header .container
+    {
+        padding: 0;
+    }
+
+    .nav-list
+    {
+        margin-top: 0;
+    }
+
+    .nav-list-mobile
+    {
+        display: flex;
+    }
+
+    .nav-item
+    {
+        width: 3rem;
+        height: 4.8rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-item-hidden
+    {
+        display: none;
+    }
+
+    .mobile-menu
+    {
+        position: relative;
+        margin-left: 30%; /*move up the menu to the right a bit*/
+        z-index: 1500;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .line
+    {
+        position: absolute;
+        width: 1.7rem;
+        height: 1px;
+        background-color: #fff;
+        opacity: .8;
+        transition: margin-top .3129s cubic-bezier(0.04, 0.04, 0.12, .96);
+    }
+
+    .line-top
+    {
+        margin-top: 4px;
+    }
+    
+    .line-bottom
+    {
+        margin-top: -.5rem;
+    }
+
+    .line:hover
+    {
+        opacity: 1.3;
+    }
+
+    .active .line-top
+    {
+        margin-top: 0;
+        transform: rotate(45deg);
+        transition: transform .3129s .1s cubic-bezier(0.04, 0.04, 0.12, .96);
+    }
+
+    .active .line-bottom
+    {
+        margin-top: 0;
+        transform: rotate(-45deg);
+        transition: transform .3129s .1s cubic-bezier(0.04, 0.04, 0.12, .96);
+    }
+
+    header.active
+    {
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8); /*made it blurry for the black on black background*/
+    }
+
+    .nav-link-logo
+    {
+        width: 5rem; /*i changed this*/
+        height: 4.8rem;
+        position: relative;
+        z-index: 1500;
+    }
+    
+    .nav
+    {
+        position: relative;
+    }
+
+    .nav-link
+    {
+        font-size: 1.7rem;
+        padding: 0;
+        margin: auto 0;
+    }
+
+    .nav-list-larger
+    {
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        display: block;
+        padding: 10.5rem 5rem;
+        z-index: 1000;
+        box-sizing: border-box;
+        transition: opacity .3s;
+        visibility: hidden;
+    }
+
+    .active .nav-list-larger
+    {
+        width: 100%;
+        height: 100vh;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-list-larger .nav-item
+    {
+        width: 100%;
+        justify-content: flex-start;
+        border-bottom: 2px solid rgba(255, 255, 255, .1);
+    }
+
+    .nav-list-larger .nav-item:nth-child(4)
+    {
+        border-bottom: none;
+    }
+
+    .active .nav-list-larger .nav-item
+    {
+        animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn
+    {
+        from
+        {
+            opacity: 0;
+        }
+        to
+        {
+            opacity: 1;
+        }
+    }
+
+    /*index - banner home-title footer*/
+
+    .home-title
+    {
+        top: 4.8rem;
+        color: white;
+        background-color: black;
+        text-align: center;
+        font-size: 3rem;
+        display: table-row;
+        height: 100%;
+    }
+
+    .title
+    {
+        left: 0;
+        line-height: 200px;
+        margin-top: -100px;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        width: 100%;
+    }
+
+    footer
+    {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        color: white;
+        background-color: black;
+    }
+
+    .footer-bottom
+    {
+        padding-bottom: 2rem;
+        position: relative;
+        bottom: 0;
+        text-align: center;
+        font-size: 0.8rem;
+        display: flex;
+        justify-content: space-around;
+        color: white;
+    }
+
+}
